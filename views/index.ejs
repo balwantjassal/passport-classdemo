@@ -8,6 +8,8 @@
     <h1><%= title %></h1>
     <p>Welcome <%= user.username.toUpperCase() %>!</p>
     <p><%= title %> of passport auth</p>
+    <% if(user.username !== 'Guest'){ %>
     <a href="/users/logout">Logout</a>
+    <% } %>
   </body>
 </html>

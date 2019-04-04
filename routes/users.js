@@ -14,7 +14,7 @@ router.post('/register', function(req, res, next){
 
 });
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  res.render('login',{message:req.flash('info_message')});
 });
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',
@@ -23,7 +23,9 @@ router.post('/login',
 );
 router.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
+  req.flash('info_message', 'You are logged out');  
   res.redirect('/users/login');
+//  req.session.destroy();
+
 });
 module.exports = router;

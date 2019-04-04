@@ -3,7 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Dashboard', user:req.user, session:req.session });
+  if(req.user){
+    user = req.user;
+  }else{
+    user = {username:'Guest'};
+  }
+  
+  res.render('index', { title: 'Dashboard', user:user, session:req.session });
 });
 
 module.exports = router;
